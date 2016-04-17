@@ -1,0 +1,9 @@
+.idea
+
+# Ignore potentially sensitive phpunit file
+phpunit.xml
+
+# Ignore composer generated files
+composer.phar
+composer.lock
+vendor/
