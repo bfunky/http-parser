@@ -1,5 +1,8 @@
 http-parser
 ===========
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bfunky/http-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bfunky/http-parser/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/bfunky/http-parser/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bfunky/http-parser/build-status/master)
+
 A library to parse HTTP header and HTTP header fields
 
 # Usage
