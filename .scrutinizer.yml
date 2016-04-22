@@ -8,11 +8,4 @@ coding_style:
         indentation:
             general:
                 size: 1
-build:
-    tests:
-        override:
-            -
-                command: 'phpunit --coverage-clover=clover'
-                coverage:
-                    file: 'clover'
-                    format: 'php-clover'
+build: true
