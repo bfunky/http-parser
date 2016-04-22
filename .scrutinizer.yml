@@ -8,4 +8,6 @@ coding_style:
         indentation:
             general:
                 size: 1
+tools:
+    external_code_coverage: true                
 build: true
