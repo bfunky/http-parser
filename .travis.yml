@@ -12,7 +12,6 @@ install:
   - composer install --no-interaction --prefer-dist
 
 script:
-  - composer dump-autoload
-  - phpunit --coverage-clover=coverage.clover test
+  - phpunit --coverage-clover=coverage.clover
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
