@@ -15,8 +15,13 @@
         "phpunit/phpunit": ">=4.8"
     },
     "autoload": {
-        "classmap": [
-            "src"
-        ]
+        "psr-4": {
+            "BFunky\\HttpParser\\" : "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BFunky\\Test\\HttpParser\\" : "test"
+        }
     }
 }
