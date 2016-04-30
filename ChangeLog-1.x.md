@@ -1,4 +1,4 @@
-# Changes in http-parser 1.*.*
+# Changes in http-parser 1.x.x
 
 ## [1.0.1]
 Added unit test to check proper handling exception
