@@ -88,4 +88,18 @@ RAW;
         $this->assertEquals($entityHeader->getMessage(), 'OK');
 
     }
+
+    /**
+     * @expectedException \BFunky\HttpParser\Exception\HttpParserBadFormatException
+     */
+    public function testThrownExceptionIfWrongRawData()
+    {
+        $parser = new HttpParser();
+        $raw = <<<RAW
+POST /path
+User-Agent: PHP-SOAP/\BeSimple\SoapClient
+
+RAW;
+        $parser->parseHttpRequestHeader($raw);
+    }
 }
