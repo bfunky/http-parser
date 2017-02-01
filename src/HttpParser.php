@@ -107,7 +107,7 @@ class HttpParser
         $fieldList = array();
         $headers = explode("\n", $this->httpRaw);
         foreach ($headers as $i => $headerLine) {
-            if ($headerLine === '') {
+            if (trim($headerLine) === '') {
                 continue;
             }
             $parts = $this->splitRawLine($headerLine);
