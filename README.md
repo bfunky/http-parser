@@ -24,7 +24,7 @@ RAW;
         /**
          * Managing Http fields
          */
-         $parser = new HttpRequestParser();
+        $parser = new HttpRequestParser();
         $parser->parse($rawHttp);
         echo $parser->get('User-Agent');
         //output PHP-SOAP/\BeSimple\SoapClient
