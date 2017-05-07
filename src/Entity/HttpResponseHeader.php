@@ -1,9 +1,6 @@
 <?php
-
 /**
- * User: jairo.rodriguez <jairo@bfunky.net>
- * Date: 16/04/2016
- * Time: 11:17
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser\Entity;
@@ -32,7 +29,7 @@ class HttpResponseHeader implements HttpHeaderInterface
      * @param string $code
      * @param string $message
      */
-    public function __construct($protocol, $code, $message)
+    public function __construct(string $protocol, string $code, string $message)
     {
         $this->protocol = $protocol;
         $this->code = $code;
@@ -42,7 +39,7 @@ class HttpResponseHeader implements HttpHeaderInterface
     /**
      * @return string
      */
-    public function getProtocol()
+    public function getProtocol(): string
     {
         return $this->protocol;
     }
@@ -51,7 +48,7 @@ class HttpResponseHeader implements HttpHeaderInterface
      * @param string $protocol
      * @return HttpResponseHeader
      */
-    public function setProtocol($protocol)
+    public function setProtocol(string $protocol): HttpResponseHeader
     {
         $this->protocol = $protocol;
         return $this;
@@ -60,7 +57,7 @@ class HttpResponseHeader implements HttpHeaderInterface
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -69,7 +66,7 @@ class HttpResponseHeader implements HttpHeaderInterface
      * @param string $code
      * @return HttpResponseHeader
      */
-    public function setCode($code)
+    public function setCode(string $code): HttpResponseHeader
     {
         $this->code = $code;
         return $this;
@@ -78,7 +75,7 @@ class HttpResponseHeader implements HttpHeaderInterface
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -87,7 +84,7 @@ class HttpResponseHeader implements HttpHeaderInterface
      * @param string $message
      * @return HttpResponseHeader
      */
-    public function setMessage($message)
+    public function setMessage(string $message): HttpResponseHeader
     {
         $this->message = $message;
         return $this;

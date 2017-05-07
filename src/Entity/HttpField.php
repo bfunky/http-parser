@@ -1,8 +1,6 @@
 <?php
 /**
- * User: jairo.rodriguez <jairo@bfunky.net>
- * Date: 16/04/2016
- * Time: 11:27
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser\Entity;
@@ -25,7 +23,7 @@ class HttpField
      * @param string $name
      * @param string $value
      */
-    public function __construct($name, $value)
+    public function __construct(string $name, string $value)
     {
         $this->name = $name;
         $this->value = $value;
@@ -34,7 +32,7 @@ class HttpField
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -43,7 +41,7 @@ class HttpField
      * @param string $name
      * @return HttpField
      */
-    public function setName($name)
+    public function setName(string $name): HttpField
     {
         $this->name = $name;
         return $this;
@@ -52,7 +50,7 @@ class HttpField
     /**
      * @return string
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->value;
     }
@@ -61,7 +59,7 @@ class HttpField
      * @param string $value
      * @return HttpField
      */
-    public function setValue($value)
+    public function setValue(string $value): HttpField
     {
         $this->value = $value;
         return $this;

@@ -1,9 +1,6 @@
 <?php
-
 /**
- * User: jairo.rodriguez <jairo@bfunky.net>
- * Date: 16/04/2016
- * Time: 11:00
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser;
@@ -27,7 +24,7 @@ class HttpParser
     protected $httpHeader;
 
     /**
-     * @var array
+     * @var HttpField[]
      */
     protected $httpFields;
 
@@ -41,7 +38,7 @@ class HttpParser
     /**
      * @param string $rawHttpHeader
      */
-    public function parseHttpRequestHeader($rawHttpHeader)
+    public function parseHttpRequestHeader(string $rawHttpHeader)
     {
         list($header, $fieldList) = $this->processHeader($rawHttpHeader);
         $this->httpHeader = new HttpRequestHeader($header[0], $header[1], $header[2]);
@@ -51,7 +48,7 @@ class HttpParser
     /**
      * @param string $rawHttpHeader
      */
-    public function parseHttpResponseHeader($rawHttpHeader)
+    public function parseHttpResponseHeader(string $rawHttpHeader)
     {
         list($header, $fieldList) = $this->processHeader($rawHttpHeader);
         $this->httpHeader = new HttpResponseHeader($header[0], $header[1], $header[2]);
@@ -62,13 +59,10 @@ class HttpParser
      * @param string $headerFieldName
      * @return string
      */
-    public function get($headerFieldName)
+    public function get(string $headerFieldName): string
     {
         $value = '';
         foreach ($this->httpFields as $httpField) {
-            /**
-             * @var HttpField $httpField
-             */
             if ($httpField->getName() === $headerFieldName) {
                 $value = $httpField->getValue();
                 break;
@@ -81,16 +75,16 @@ class HttpParser
     /**
      * @return HttpHeaderInterface
      */
-    public function getHeader()
+    public function getHeader(): HttpHeaderInterface
     {
         return $this->httpHeader;
     }
 
     /**
      * @param string $rawHttpHeader
-     * @return mixed
+     * @return array
      */
-    protected function processHeader($rawHttpHeader)
+    protected function processHeader(string $rawHttpHeader): array
     {
         $this->setHttpRaw($rawHttpHeader);
         return $this->extract();
@@ -98,10 +92,10 @@ class HttpParser
 
     /**
      * Split the http string
-     * @return mixed
+     * @return array
      * @throws HttpParserBadFormatException
      */
-    protected function extract()
+    protected function extract(): array
     {
         $header = array();
         $fieldList = array();
@@ -127,13 +121,12 @@ class HttpParser
      * @param string $line
      * @return array
      */
-    protected function splitRawLine($line)
+    protected function splitRawLine(string $line): array
     {
         $parts = array();
         if (strpos($line, ': ') !== false) {
             $parts = explode(': ', $line);
-        }
-        else if (strpos($line, ':') !== false) {
+        } else if (strpos($line, ':') !== false) {
             $parts = explode(':', $line);
         }
         return $parts;
@@ -142,7 +135,7 @@ class HttpParser
     /**
      * @param array $fieldList
      */
-    protected function processFields($fieldList)
+    protected function processFields(array $fieldList)
     {
         foreach ($fieldList as $fieldName => $fieldValue) {
             $this->httpFields [] = new HttpField($fieldName, $fieldValue);
@@ -153,7 +146,7 @@ class HttpParser
      * @param string $httpRaw
      * @return HttpParser
      */
-    protected function setHttpRaw($httpRaw)
+    protected function setHttpRaw(string $httpRaw): HttpParser
     {
         $this->httpRaw = $httpRaw;
         return $this;

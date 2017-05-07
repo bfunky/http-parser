@@ -1,9 +1,6 @@
 <?php
-
 /**
- * User: jairo.rodriguez <jairo@bfunky.net>
- * Date: 16/04/2016
- * Time: 11:17
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser\Entity;
@@ -32,7 +29,7 @@ class HttpRequestHeader implements HttpHeaderInterface
      * @param string $path
      * @param string $protocol
      */
-    public function __construct($method, $path, $protocol)
+    public function __construct(string $method, string $path, string $protocol)
     {
         $this->method = $method;
         $this->path = $path;
@@ -43,7 +40,7 @@ class HttpRequestHeader implements HttpHeaderInterface
     /**
      * @return string
      */
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method;
     }
@@ -52,7 +49,7 @@ class HttpRequestHeader implements HttpHeaderInterface
      * @param string $method
      * @return HttpRequestHeader
      */
-    public function setMethod($method)
+    public function setMethod(string $method): HttpRequestHeader
     {
         $this->method = $method;
         return $this;
@@ -61,7 +58,7 @@ class HttpRequestHeader implements HttpHeaderInterface
     /**
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
@@ -70,7 +67,7 @@ class HttpRequestHeader implements HttpHeaderInterface
      * @param string $path
      * @return HttpRequestHeader
      */
-    public function setPath($path)
+    public function setPath(string $path): HttpRequestHeader
     {
         $this->path = $path;
         return $this;
@@ -79,7 +76,7 @@ class HttpRequestHeader implements HttpHeaderInterface
     /**
      * @return string
      */
-    public function getProtocol()
+    public function getProtocol(): string
     {
         return $this->protocol;
     }
@@ -88,7 +85,7 @@ class HttpRequestHeader implements HttpHeaderInterface
      * @param string $protocol
      * @return HttpRequestHeader
      */
-    public function setProtocol($protocol)
+    public function setProtocol(string $protocol): HttpRequestHeader
     {
         $this->protocol = $protocol;
         return $this;
