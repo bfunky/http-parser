@@ -64,4 +64,13 @@ class HttpField
         $this->value = $value;
         return $this;
     }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @return HttpField
+     */
+    public static function fromKeyAndValue(string $key, string $value){
+        return new self($key, $value);
+    }
 }

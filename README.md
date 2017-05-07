@@ -24,7 +24,8 @@ RAW;
         /**
          * Managing Http fields
          */
-        $parser->parseHttpRequestHeader($rawHttp);
+         $parser = new HttpRequestParser();
+        $parser->parse($rawHttp);
         echo $parser->get('User-Agent');
         //output PHP-SOAP/\BeSimple\SoapClient
         echo $parser->get('Host');
@@ -66,7 +67,8 @@ RAW;
         /**
          * Managing Http fields
          */
-        $parser->parseHttpResponseHeader($raw);
+        $parser = new HttpResponseParser();
+        $parser->parse($raw);
         echo $parser->get('Content-Length');
         //output 192
         echo $parser->get('Content-Type');

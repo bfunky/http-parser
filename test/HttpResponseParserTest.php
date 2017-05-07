@@ -1,54 +1,19 @@
 <?php
-
 /**
- * User: jairo.rodriguez <jairo@bfunky.net>
- * Date: 16/04/2016
- * Time: 13:23
+ * Author: bfunky
  */
 
-namespace BFunky\Test\HttpParser\Exception;
+namespace BFunky\Test\HttpParser;
 
-use BFunky\HttpParser\HttpParser;
-use BFunky\HttpParser\Entity\HttpRequestHeader;
 use BFunky\HttpParser\Entity\HttpResponseHeader;
+use BFunky\HttpParser\HttpResponseParser;
 
-class HttpParserTest extends \PHPUnit_Framework_TestCase
+
+class HttpResponseParserTest extends \PHPUnit_Framework_TestCase
 {
-    public function testParseHttpRequestHeader()
-    {
-        $parser = new HttpParser();
-        $raw = <<<RAW
-POST /path HTTP/1.1
-User-Agent: PHP-SOAP/\BeSimple\SoapClient
-Host: url.com:80
-Accept: */*
-Accept-Encoding: deflate, gzip
-Content-Type:text/xml; charset=utf-8
-Content-Length: 1108
-Expect: 100-continue
-
-RAW;
-        $parser->parseHttpRequestHeader($raw);
-        $this->assertEquals($parser->get('User-Agent'), 'PHP-SOAP/\BeSimple\SoapClient');
-        $this->assertEquals($parser->get('Host'), 'url.com:80');
-        $this->assertEquals($parser->get('Accept'), '*/*');
-        $this->assertEquals($parser->get('Accept-Encoding'), 'deflate, gzip');
-        $this->assertEquals($parser->get('Content-Type'), 'text/xml; charset=utf-8');
-        $this->assertEquals($parser->get('Content-Length'), '1108');
-        $this->assertEquals($parser->get('Expect'), '100-continue');
-        /**
-         * @var HttpRequestHeader $entityHeader
-         */
-        $entityHeader = $parser->getHeader();
-        $this->assertInstanceOf('\BFunky\HttpParser\Entity\HttpRequestHeader', $entityHeader);
-        $this->assertEquals($entityHeader->getMethod(), 'POST');
-        $this->assertEquals($entityHeader->getPath(), '/path');
-        $this->assertEquals($entityHeader->getProtocol(), 'HTTP/1.1');
-    }
-
     public function testParseHttpResponseHeader()
     {
-        $parser = new HttpParser();
+        $parser = new HttpResponseParser();
         $raw = <<<RAW
 HTTP/1.1 100 Continue
 
@@ -66,7 +31,7 @@ Content-Encoding: gzip
 Content-Length: 192
 Content-Type: text/xml
 RAW;
-        $parser->parseHttpResponseHeader($raw);
+        $parser->parse($raw);
         $this->assertEquals($parser->get('Date'), 'Tue, 12 Apr 2016 13:58:01 GMT');
         $this->assertEquals($parser->get('Server'), 'Apache/2.2.14 (Ubuntu)');
         $this->assertEquals($parser->get('X-Powered-By'), 'PHP/5.3.14 ZendServer/5.0');
@@ -94,12 +59,12 @@ RAW;
      */
     public function testThrownExceptionIfWrongRawData()
     {
-        $parser = new HttpParser();
+        $parser = new HttpResponseParser();
         $raw = <<<RAW
 POST /path
 User-Agent: PHP-SOAP/\BeSimple\SoapClient
 
 RAW;
-        $parser->parseHttpRequestHeader($raw);
+        $parser->parse($raw);
     }
 }
