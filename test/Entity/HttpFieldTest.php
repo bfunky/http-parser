@@ -9,8 +9,9 @@
 namespace BFunky\Test\HttpParser\Entity;
 
 use BFunky\HttpParser\Entity\HttpField;
+use PHPUnit\Framework\TestCase;
 
-class HttpFieldTest extends \PHPUnit_Framework_TestCase
+class HttpFieldTest extends TestCase
 {
 
     public function testGetters()

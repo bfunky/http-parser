@@ -7,9 +7,9 @@ namespace BFunky\Test\HttpParser;
 
 use BFunky\HttpParser\Entity\HttpResponseHeader;
 use BFunky\HttpParser\HttpResponseParser;
+use PHPUnit\Framework\TestCase;
 
-
-class HttpResponseParserTest extends \PHPUnit_Framework_TestCase
+class HttpResponseParserTest extends TestCase
 {
     public function testParseHttpResponseHeader()
     {

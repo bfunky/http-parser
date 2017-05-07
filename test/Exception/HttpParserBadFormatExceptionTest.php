@@ -9,8 +9,9 @@
 namespace BFunky\Test\HttpParser\Exception;
 
 use BFunky\HttpParser\Exception\HttpParserBadFormatException;
+use PHPUnit\Framework\TestCase;
 
-class HttpParserBadFormatExceptionTest extends \PHPUnit_Framework_TestCase
+class HttpParserBadFormatExceptionTest extends TestCase
 {
     public function testMessage()
     {

@@ -7,9 +7,9 @@ namespace BFunky\Test\HttpParser\Entity;
 
 
 use BFunky\HttpParser\Entity\HttpDataValidation;
+use PHPUnit\Framework\TestCase;
 
-
-class HttpDataValidationTest extends \PHPUnit_Framework_TestCase
+class HttpDataValidationTest extends TestCase
 {
     public function testIsFieldValidationWithAFieldLine(){
         $line = 'Pragma: no-cache';
