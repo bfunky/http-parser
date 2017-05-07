@@ -68,7 +68,8 @@ class HttpFieldCollection
      * @param array $httpFields
      * @return HttpFieldCollection
      */
-    public static function fromHttpFieldArray(array $httpFields){
+    public static function fromHttpFieldArray(array $httpFields)
+    {
         return new self($httpFields);
     }
 }

@@ -70,7 +70,8 @@ class HttpField
      * @param string $value
      * @return HttpField
      */
-    public static function fromKeyAndValue(string $key, string $value){
+    public static function fromKeyAndValue(string $key, string $value)
+    {
         return new self($key, $value);
     }
 }
