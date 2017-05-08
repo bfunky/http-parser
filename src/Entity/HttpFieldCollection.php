@@ -21,7 +21,10 @@ class HttpFieldCollection
      */
     public function __construct(array $httpFields = [])
     {
-        $this->httpFields = $httpFields;
+        $this->httpFields = [];
+        foreach ($httpFields as $httpField) {
+            $this->httpFields[$httpField->getName()] = $httpField;
+        }
     }
 
     /**
@@ -59,7 +62,7 @@ class HttpFieldCollection
      */
     private function checkKeyExists($key)
     {
-        if (is_null($this->httpFields[$key])) {
+        if (!array_key_exists($key, $this->httpFields)) {
             throw new  HttpFieldNotFoundOnCollection('Field ' . $key . ' not found');
         }
     }

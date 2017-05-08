@@ -48,8 +48,7 @@ class HttpFieldCollectionTest extends TestCase
     public function testGetMethodReturnsErrorIfElementDoesNotExists()
     {
         $collection = new HttpFieldCollection();
-        $collection->add(HttpField::fromKeyAndValue('key', 'value'));
-        $element = $collection->get('key');
+        $collection->get('key');
     }
 
     /**
