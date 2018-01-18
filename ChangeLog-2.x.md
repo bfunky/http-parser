@@ -9,5 +9,11 @@
 
 ## [2.2.0]
 * Upgrade phpunit to version 6
-* minor improvements for php 7.2
+* minor improvements for php 7.1
 * header annotations are normalized
+
+## [2.2.1]
+* fix to upgrade php version to 7.1
+
+## [2.2.2]
+* improve headers information
