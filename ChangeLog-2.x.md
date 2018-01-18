@@ -6,3 +6,8 @@
 ## [2.1.0]
 * Refactoring to use a collection instead an array of fields
 * Separate HttpParser on HttpRequestParser and HttpResponseParser to accomplish in a better way the Single Responsability Principle.
+
+## [2.2.0]
+* Upgrade phpunit to version 6
+* minor improvements for php 7.2
+* header annotations are normalized

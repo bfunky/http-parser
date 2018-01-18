@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: bfunky
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\Test\HttpParser\Entity;
@@ -8,6 +8,7 @@ namespace BFunky\Test\HttpParser\Entity;
 
 use BFunky\HttpParser\Entity\HttpDataValidation;
 use PHPUnit\Framework\TestCase;
+use \BFunky\HttpParser\Exception\HttpParserBadFormatException;
 
 class HttpDataValidationTest extends TestCase
 {
@@ -23,16 +24,15 @@ class HttpDataValidationTest extends TestCase
         $this->assertFalse(HttpDataValidation::isField($line));
     }
 
-    /**
-     * @expectedException \BFunky\HttpParser\Exception\HttpParserBadFormatException
-     */
     public function testCheckHeaderOrRaiseErrorWithAWrongHeader()
     {
+        $this->expectException(HttpParserBadFormatException::class);
         HttpDataValidation::checkHeaderOrRaiseError('POST', '', '');
     }
 
     public function testCheckHeaderOrRaiseErrorWithACorrectHeader()
     {
-        HttpDataValidation::checkHeaderOrRaiseError('POST', '/path', 'HTTP/1.1');
+        $return = HttpDataValidation::checkHeaderOrRaiseError('POST', '/path', 'HTTP/1.1');
+        $this->assertNull($return);
     }
 }

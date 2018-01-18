@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: bfunky
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\Test\HttpParser;

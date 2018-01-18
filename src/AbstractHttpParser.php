@@ -41,7 +41,7 @@ abstract class AbstractHttpParser implements HttpParserInterface
     /**
      * @param string $rawHttp
      */
-    public function parse(string $rawHttp)
+    public function parse(string $rawHttp): void
     {
         $this->process($rawHttp);
     }
@@ -67,8 +67,9 @@ abstract class AbstractHttpParser implements HttpParserInterface
 
     /**
      * @param string $rawHttp
+     * @throws HttpParserBadFormatException
      */
-    protected function process(string $rawHttp)
+    protected function process(string $rawHttp): void
     {
         $this->setHttpRaw($rawHttp);
         $this->extract();
@@ -78,7 +79,7 @@ abstract class AbstractHttpParser implements HttpParserInterface
      * Split the http string
      * @throws HttpParserBadFormatException
      */
-    protected function extract()
+    protected function extract(): void
     {
         $headers = explode("\n", $this->httpRaw);
         foreach ($headers as $i => $headerLine) {
@@ -97,7 +98,7 @@ abstract class AbstractHttpParser implements HttpParserInterface
      * @param string $headerLine
      * @throws HttpParserBadFormatException
      */
-    protected function addHeader(string $headerLine)
+    protected function addHeader(string $headerLine): void
     {
         $data = preg_split('/ /', $headerLine);
         $data = array_merge($data, ['', '', '']);
@@ -108,7 +109,7 @@ abstract class AbstractHttpParser implements HttpParserInterface
     /**
      * @param string $headerLine
      */
-    protected function addField(string $headerLine)
+    protected function addField(string $headerLine): void
     {
         list($fieldKey, $fieldValue) = $this->splitRawLine($headerLine);
         $this->httpFieldCollection->add(HttpField::fromKeyAndValue($fieldKey, $fieldValue));
@@ -119,7 +120,7 @@ abstract class AbstractHttpParser implements HttpParserInterface
      * @param string $path
      * @param string $protocol
      */
-    abstract protected function setHttpHeader(string $method, string $path, string $protocol);
+    abstract protected function setHttpHeader(string $method, string $path, string $protocol): void;
 
     /**
      * @param string $line
@@ -130,8 +131,10 @@ abstract class AbstractHttpParser implements HttpParserInterface
         $parts = [];
         if (strpos($line, ': ') !== false) {
             $parts = explode(': ', $line);
-        } else if (strpos($line, ':') !== false) {
-            $parts = explode(':', $line);
+        } else {
+            if (strpos($line, ':') !== false) {
+                $parts = explode(':', $line);
+            }
         }
         return $parts;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: bfunky
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser\Entity;
@@ -30,7 +30,7 @@ class HttpFieldCollection
     /**
      * @param HttpField $obj
      */
-    public function add(HttpField $obj)
+    public function add(HttpField $obj): void
     {
         $this->httpFields[$obj->getName()] = $obj;
     }
@@ -39,7 +39,7 @@ class HttpFieldCollection
      * @param string $key
      * @throws HttpFieldNotFoundOnCollection
      */
-    public function delete(string $key)
+    public function delete(string $key): void
     {
         $this->checkKeyExists($key);
         unset($this->httpFields[$key]);
@@ -50,7 +50,7 @@ class HttpFieldCollection
      * @return HttpField
      * @throws HttpFieldNotFoundOnCollection
      */
-    public function get(string $key)
+    public function get(string $key): HttpField
     {
         $this->checkKeyExists($key);
         return $this->httpFields[$key];
@@ -60,7 +60,7 @@ class HttpFieldCollection
      * @param $key
      * @throws HttpFieldNotFoundOnCollection
      */
-    private function checkKeyExists($key)
+    private function checkKeyExists($key): void
     {
         if (!array_key_exists($key, $this->httpFields)) {
             throw new  HttpFieldNotFoundOnCollection('Field ' . $key . ' not found');
@@ -69,9 +69,9 @@ class HttpFieldCollection
 
     /**
      * @param array $httpFields
-     * @return HttpFieldCollection
+     * @return self
      */
-    public static function fromHttpFieldArray(array $httpFields)
+    public static function fromHttpFieldArray(array $httpFields): self
     {
         return new self($httpFields);
     }

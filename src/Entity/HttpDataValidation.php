@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: bfunky
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser\Entity;
@@ -14,7 +14,7 @@ class HttpDataValidation
      * @param string $httpLine
      * @return bool
      */
-    public static function isField(string $httpLine)
+    public static function isField(string $httpLine): bool
     {
         return (strpos($httpLine, ':') !== false);
     }
@@ -25,7 +25,7 @@ class HttpDataValidation
      * @param string $protocol
      * @throws HttpParserBadFormatException
      */
-    public static function checkHeaderOrRaiseError(string $method, string $path, string $protocol)
+    public static function checkHeaderOrRaiseError(string $method, string $path, string $protocol): void
     {
         if (empty($method) || empty($path) || empty($protocol)) {
             throw new HttpParserBadFormatException();

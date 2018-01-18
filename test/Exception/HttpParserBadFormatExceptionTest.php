@@ -1,9 +1,6 @@
 <?php
-
 /**
- * User: jairo.rodriguez <jairo@bfunky.net>
- * Date: 16/04/2016
- * Time: 13:23
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\Test\HttpParser\Exception;
