@@ -1,12 +1,11 @@
 <?php
 /**
- * Author: Jairo Rodríguez <jairo@bfunky.net>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Author: jairo.rodriguez <jairo@bfunky.net>
  */
 
 namespace BFunky\HttpParser;
+
+require_once(__DIR__ . "/Analytics.php");
 
 use BFunky\HttpParser\Entity\HttpDataValidation;
 use BFunky\HttpParser\Entity\HttpField;
