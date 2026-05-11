@@ -8,6 +8,8 @@
 
 namespace BFunky\HttpParser;
 
+require_once(__DIR__ . "/Analytics.php");
+
 use \BFunky\HttpParser\Entity\HttpField;
 use \BFunky\HttpParser\Entity\HttpRequestHeader;
 use \BFunky\HttpParser\Entity\HttpResponseHeader;
